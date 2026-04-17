@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml
+# ^ แก้ให้ตรงกับ URL จริงของนิวหลัง deploy
