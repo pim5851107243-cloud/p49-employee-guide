@@ -14,12 +14,12 @@ window.P49_CONFIG = {
   //    - ใส่ Measurement ID ที่ได้จาก analytics.google.com
   //    - รูปแบบ: "G-XXXXXXXXXX"
   //    - ถ้าปล่อยว่าง → ไม่ load GA4
-  ga4Id: "",
+  ga4Id: "G-P344FRTGJW",
 
   // 3) Microsoft Clarity (heatmap · session replay)
   //    - ใส่ Project ID ที่ได้จาก clarity.microsoft.com
   //    - ถ้าปล่อยว่าง → ไม่ load Clarity
-  clarityId: ""
+  clarityId: "wd6fl04yvy"
 };
 
 /* ============================================================
