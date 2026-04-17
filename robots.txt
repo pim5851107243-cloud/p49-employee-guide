@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
-# ^ แก้ให้ตรงกับ URL จริงของนิวหลัง deploy
+Sitemap: https://pim5851107243-cloud.github.io/p49-employee-guide/sitemap.xml
