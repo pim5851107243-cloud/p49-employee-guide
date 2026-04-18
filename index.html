@@ -28,9 +28,8 @@
     <a href="faq.html">HR &amp; FAQ</a>
   </nav>
   <div class="topbar-right">
-    <a href="faq.html" class="search-btn">ค้นหา ⌕</a>
-    <button class="lang-btn">TH / EN</button>
-    <div class="avatar">นว</div>
+    <!-- TH/EN toggle will be enabled in Phase 4 when English version is ready -->
+    <!-- <button class="lang-btn">TH / EN</button> -->
   </div>
 </header>
 
@@ -53,11 +52,49 @@
   </div>
 </section>
 
-<!-- GREETING -->
+<!-- GREETING · rotating welcome message (time-based) -->
 <div class="greeting">
-  <div class="greeting-title">สวัสดีครับคุณนิว, <em>ขอให้วันนี้</em> เต็มไปด้วยแรงบันดาลใจ</div>
-  <div class="greeting-date">FRIDAY · 17 APRIL 2026</div>
+  <div class="greeting-title" id="welcomeMessage">ยินดีต้อนรับกลับสู่ P49 · ดีใจที่ได้เจอกันอีกครั้ง</div>
+  <div class="greeting-date" id="currentDate">—</div>
 </div>
+<script>
+  (function () {
+    var messages = {
+      morning: [
+        "ยินดีต้อนรับกลับสู่ P49 · ดีใจที่ได้เจอกันอีกครั้ง",                              // 4
+        "แสงยามเช้าใจดีกับทุกคนเสมอ · ขอให้คุณใจดีกับตัวเองในวันนี้ด้วยนะ",                   // 6
+        "ขอให้วันนี้เต็มไปด้วยแรงบันดาลใจและรอยยิ้มเล็กๆ"                                  // 8
+      ],
+      daytime: [
+        "ค่อยๆ ไปก็ได้ ไม่ต้องเร่ง · เราอยู่ด้วยกันที่นี่",                                    // 3
+        "ทุกวันคือโอกาสในการสร้างสรรค์สิ่งสวยงามไปด้วยกัน",                                 // 7
+        "ทุกก้าวเล็กๆ ในวันนี้ · จะกลายเป็นผลงานที่งดงามในวันข้างหน้า"                        // 9
+      ],
+      evening: [
+        "บ้านที่ดีเริ่มจากผู้คนที่อบอุ่น · ขอบคุณที่เป็นส่วนหนึ่งของที่นี่",                         // 5
+        "ทุกคนคือส่วนสำคัญของ P49 · ขอบคุณที่อยู่ในทีมนี้"                                  // 10
+      ]
+    };
+
+    var now = new Date();
+    var h = now.getHours();
+    var bucket = (h >= 5 && h < 11) ? "morning"
+               : (h >= 11 && h < 17) ? "daytime"
+               : "evening";
+    var pool = messages[bucket];
+    var pick = pool[Math.floor(Math.random() * pool.length)];
+
+    var el = document.getElementById("welcomeMessage");
+    if (el) el.textContent = pick;
+
+    // Dynamic date · Thai locale · format: FRIDAY · 17 APRIL 2026
+    var dayNames = ["SUNDAY","MONDAY","TUESDAY","WEDNESDAY","THURSDAY","FRIDAY","SATURDAY"];
+    var monthNames = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+    var dateStr = dayNames[now.getDay()] + " · " + now.getDate() + " " + monthNames[now.getMonth()] + " " + now.getFullYear();
+    var dateEl = document.getElementById("currentDate");
+    if (dateEl) dateEl.textContent = dateStr;
+  })();
+</script>
 
 <main class="main">
 
